@@ -1,0 +1,36 @@
+{
+  "name": "hackernews-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gints Polis <polis.gints@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start:dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src",
+    "start:prod": "prisma deploy && node ./index.js",
+    "prisma:deploy": "prisma deploy",
+    "prisma:generate": "prisma generate",
+    "prisma:reset": "prisma reset",
+    "prisma:seed": "prisma seed",
+    "test": "prisma reset -f && jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.5",
+    "dotenv": "^7.0.0",
+    "prisma": "^1.29.2",
+    "graphql-yoga": "^1.17.4",
+    "jsonwebtoken": "^8.5.1",
+    "prisma-client-lib": "^1.29.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/jest": "^24.0.11",
+    "@types/jsonwebtoken": "^8.3.2",
+    "@types/node": "10.14.4",
+    "@types/supertest": "^2.0.7",
+    "jest": "^24.7.1",
+    "supertest": "^4.0.2",
+    "ts-node-dev": "^1.0.0-pre.32",
+    "typescript": "^3.1.6"
+  }
+}

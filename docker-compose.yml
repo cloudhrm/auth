@@ -1,0 +1,68 @@
+version: '3'
+
+services:
+  client:
+    build:
+      context: ./packages/client
+    image: registry.gitlab.com/gintsgints/vue-fullstack/client:latest
+    environment:
+      - NODE_ENV=production
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - 'auth:auth'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
+        max-file: '20'
+
+  auth:
+    build:
+      context: ./packages/server
+    image: registry.gitlab.com/gintsgints/vue-fullstack/auth:latest
+    environment:
+      - NODE_ENV=production
+      - PRISMA_HOST=prisma
+      - PRISMA_PORT=4466
+    links:
+      - 'prisma'
+    ports:
+      - '4000:4000'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
+        max-file: '20'
+
+  prisma:
+    image: prismagraphql/prisma:1.29
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - '4466:4466'
+    environment:
+      PRISMA_CONFIG: |
+        port: 4466
+        databases:
+          default:
+            connector: postgres
+            host: db
+            port: 5432
+            user: prisma
+            password: prisma
+            migrations: true
+  db:
+    image: postgres:10.3-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
+        max-file: '20'

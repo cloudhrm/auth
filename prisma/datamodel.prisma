@@ -1,0 +1,29 @@
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  company: Company
+  groups: [Group!]!
+}
+
+type KeyPair {
+  id: ID! @unique
+  public: String!
+  private: String!
+}
+
+type Company {
+  id: ID! @unique
+  name: String!
+  homepage: String
+  owner: User
+  groups: [Group!]!
+}
+
+type Group {
+  id: ID! @unique
+  name: String!
+  company: Company!
+  users: [User!]!
+}
