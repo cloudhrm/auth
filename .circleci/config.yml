@@ -12,29 +12,30 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-        name: Build Docker image
-        command: docker build -t $IMAGE_NAME:latest .
+          name: Build Docker image
+          command: |
+            docker build -t $IMAGE_NAME:latest .
       - run:
-        name: Archive Docker image
-        command: docker save -o image.tar $IMAGE_NAME
+          name: Archive Docker image
+          command: docker save -o image.tar $IMAGE_NAME
       - persist_to_workspace:
-        root: .
-        paths:
-          - ./image.tar
+          root: .
+          paths:
+            - ./image.tar
   publish-latest:
     executor: docker-publisher
     steps:
       - attach_workspace:
-        at: /tmp/workspace
+          at: /tmp/workspace
       - setup_remote_docker
       - run:
-        name: Load archived Docker image
-        command: docker load -i /tmp/workspace/image.tar
+          name: Load archived Docker image
+          command: docker load -i /tmp/workspace/image.tar
       - run:
-        name: Publish Docker Image to Docker Hub
-        command: |
-          echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
-          docker push $IMAGE_NAME:latest
+          name: Publish Docker Image to Docker Hub
+          command: |
+            echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USER" --password-stdin
+            docker push $IMAGE_NAME:latest
 workflows:
   version: 2
   build-master:
