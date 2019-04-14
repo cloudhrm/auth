@@ -20,12 +20,11 @@ services:
 
   auth:
     build:
-      context: ./packages/server
-    image: registry.gitlab.com/gintsgints/vue-fullstack/auth:latest
+      context: .
+    image: cloudhrm/auth:latest
     environment:
       - NODE_ENV=production
-      - PRISMA_HOST=prisma
-      - PRISMA_PORT=4466
+      - PRISMA_CLOUD_SESSION_KEY=$PRISMA_CLOUD_SESSION_KEY
     links:
       - 'prisma'
     ports:
