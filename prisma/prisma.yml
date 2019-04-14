@@ -1,5 +1,5 @@
 # The HTTP endpoint for your Prisma API
-endpoint: 'http://${env:PRISMA_HOST}:${env:PRISMA_PORT}'
+endpoint: https://eu1.prisma.sh/gints-a3f8c2/hominium-auth/dev
 
 # Points to the file that contains your datamodel
 datamodel: datamodel.prisma

@@ -1,9 +1,8 @@
-# Backend
+# API for HRM authorization
 
 ## TODO
 
 - implement permissions guards
-- implement testing (mainly done)
 - think about nexus-prisma plugin
 - add company to token.
 
@@ -18,7 +17,6 @@ docker-compose up -d prisma
 After start server:
 
 ```
-cd packages/server
 yarn prisma:deploy
 yarn prisma:generate
 yarn start:dev
