@@ -8,7 +8,6 @@ executors:
 jobs:
   build:
     executor: docker-publisher
-    context: cloudhrm
     steps:
       - checkout
       - setup_remote_docker
@@ -25,7 +24,6 @@ jobs:
             - ./image.tar
   publish-latest:
     executor: docker-publisher
-    context: cloudhrm
     steps:
       - attach_workspace:
           at: /tmp/workspace
