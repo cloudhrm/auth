@@ -1,6 +1,7 @@
 version: 2.1
 executors:
   docker-publisher:
+    context: cloudhrm
     environment:
       IMAGE_NAME: cloudhrm/auth
     docker:
