@@ -25,8 +25,8 @@ RUN yarn install --production=true
 FROM node:10.15-alpine AS release
 WORKDIR /usr/src/app
 
-LABEL maintainer="Gints Polis <gints.polis@lattelecom.lv>"
-LABEL description="NUXT demo application backend"
+LABEL maintainer="Gints Polis <polis.gints@gmail.com>"
+LABEL description="Authorization backend for CloudHRM system"
 
 COPY --from=dependencies /usr/src/app .
 
