@@ -11,7 +11,7 @@ services:
       - PRISMA_HOST=prisma
       - PRISMA_PORT=4466
       - PRISMA_PROT=http
-      - PRISMA_PATH=
+      - PRISMA_PATH=/auth/dev
     links:
       - 'prisma'
     ports:
