@@ -1,23 +1,6 @@
 version: '3'
 
 services:
-  client:
-    build:
-      context: ./packages/client
-    image: registry.gitlab.com/gintsgints/vue-fullstack/client:latest
-    environment:
-      - NODE_ENV=production
-    ports:
-      - '80:80'
-      - '443:443'
-    links:
-      - 'auth:auth'
-    logging:
-      driver: 'json-file'
-      options:
-        max-size: '50m'
-        max-file: '20'
-
   auth:
     build:
       context: .
@@ -25,6 +8,10 @@ services:
     environment:
       - NODE_ENV=production
       - PRISMA_CLOUD_SESSION_KEY=$PRISMA_CLOUD_SESSION_KEY
+      - PRISMA_HOST=localhost
+      - PRISMA_PORT=4466
+      - PRISMA_PROT=http
+      - PRISMA_PATH=
     links:
       - 'prisma'
     ports:
