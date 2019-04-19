@@ -8,7 +8,7 @@ services:
     environment:
       - NODE_ENV=production
       - PRISMA_CLOUD_SESSION_KEY=$PRISMA_CLOUD_SESSION_KEY
-      - PRISMA_HOST=localhost
+      - PRISMA_HOST=prisma
       - PRISMA_PORT=4466
       - PRISMA_PROT=http
       - PRISMA_PATH=
