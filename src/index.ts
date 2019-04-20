@@ -1,5 +1,7 @@
 import server from './server'
-const consul = require('consul')()
+const consul = require('consul')({
+  host: process.env.CONSUL_HOST || 'localhost'
+})
 const port = 4000
 
 require('dotenv').config()
@@ -9,7 +11,7 @@ server.start({ port }, () => {
   const CONSUL_ID = require('uuid').v4()
   const details = {
     name: 'auth',
-    address: process.env.CONSUL_HOST || 'localhost',
+    address: 'localhost',
     port,
     id: CONSUL_ID,
     check: {

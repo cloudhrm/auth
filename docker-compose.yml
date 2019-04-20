@@ -15,6 +15,7 @@ services:
       - CONSUL_HOST=consul
     links:
       - 'prisma'
+      - 'consul'
     ports:
       - '4000:4000'
     logging:
