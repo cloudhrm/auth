@@ -2,10 +2,21 @@ import server from './server'
 const consul = require('consul')({
   host: process.env.CONSUL_HOST || 'localhost'
 })
-const port = process.env.AUTH_PORT || 4000
-const address = process.env.AUTH_HOST || 'localhost'
 
 require('dotenv').config()
+
+function normalizePort(portin: string | number): string | number {
+  const portNumber: number =
+    typeof portin === 'string' ? parseInt(portin, 10) : portin
+  if (isNaN(portNumber)) {
+    return portin
+  } else {
+    return portNumber
+  }
+}
+
+const port = normalizePort(process.env.AUTH_PORT || 4000)
+const address = process.env.AUTH_HOST || 'localhost'
 
 server.start({ port }, () => {
   console.log(`Server is running on http://${address}:${port}`)
