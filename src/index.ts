@@ -2,15 +2,17 @@ import server from './server'
 const consul = require('consul')({
   host: process.env.CONSUL_HOST || 'localhost'
 })
-const port = 4000
+const port = process.env.AUTH_PORT || 4000
+const address = process.env.AUTH_HOST || 'localhost'
 
 require('dotenv').config()
 
 server.start({ port }, () => {
-  console.log(`Server is running on http://localhost:4000`)
+  console.log(`Server is running on http://${address}:${port}`)
   const CONSUL_ID = require('uuid').v4()
   const details = {
     name: 'auth',
+    address,
     port,
     id: CONSUL_ID,
     check: {
