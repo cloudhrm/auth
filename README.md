@@ -1,5 +1,7 @@
 # API for HRM authorization
 
+[![CircleCI](https://circleci.com/gh/cloudhrm/auth.svg?style=svg)](https://circleci.com/gh/cloudhrm/auth)
+
 ## TODO
 
 - implement permissions guards
