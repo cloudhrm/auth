@@ -30,6 +30,6 @@ LABEL description="Authorization backend for CloudHRM system"
 
 COPY --from=dependencies /usr/src/app .
 
-EXPOSE 3001
+EXPOSE 4000
 
 CMD ["yarn", "start:prod"]
