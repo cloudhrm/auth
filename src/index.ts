@@ -11,7 +11,6 @@ server.start({ port }, () => {
   const CONSUL_ID = require('uuid').v4()
   const details = {
     name: 'auth',
-    address: 'localhost',
     port,
     id: CONSUL_ID,
     check: {
@@ -20,6 +19,7 @@ server.start({ port }, () => {
     }
   }
   consul.agent.service.register(details, err => {
+    if (err) throw new Error(err)
     setInterval(() => {
       consul.agent.check.pass({ id: `service:${CONSUL_ID}` }, err => {
         if (err) throw new Error(err)
