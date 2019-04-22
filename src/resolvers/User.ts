@@ -1,5 +1,5 @@
-async function groups(parent, args, context) {
-  return await context.prisma.user({ id: parent.id }).groups()
+async function groups({ id }, args, { prisma }) {
+  return await prisma.user({ id }).groups()
 }
 
 export const User = { groups }

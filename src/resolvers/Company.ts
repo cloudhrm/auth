@@ -1,9 +1,9 @@
-function owner(parent, args, context) {
-  return context.prisma.company({ id: parent.id }).owner()
+function owner({ id }, args, { prisma }) {
+  return prisma.company({ id }).owner()
 }
 
-function groups(parent, args, context) {
-  return context.prisma.company({ id: parent.id }).groups()
+function groups({ id }, args, { prisma }) {
+  return prisma.company({ id }).groups()
 }
 
 export const Company = { owner, groups }

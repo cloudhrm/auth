@@ -1,17 +1,17 @@
 import { getUserId } from '../utils'
 
-async function mycompany(parent, args, context, info) {
-  const userId = await getUserId(context)
-  return await context.prisma.companies({ where: { owner: { id: userId } } })
+async function mycompany(parent, args, { prisma, request }, info) {
+  const userId = await getUserId(prisma, request)
+  return await prisma.companies({ where: { owner: { id: userId } } })
 }
 
-async function me(parent, args, context, info) {
-  const userId = await getUserId(context)
-  return await context.prisma.user({ id: userId })
+async function me(parent, args, { prisma, request }, info) {
+  const userId = await getUserId(prisma, request)
+  return await prisma.user({ id: userId })
 }
 
-async function key(parent, args, context, info) {
-  const keypair = await context.prisma.keyPair({ id: args.id })
+async function key(parent, { id }, { prisma }, info) {
+  const keypair = await prisma.keyPair({ id })
   if (!keypair) {
     throw new Error('No such key')
   }

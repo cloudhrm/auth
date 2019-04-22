@@ -6,13 +6,13 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "start:dev": "ts-node-dev --no-notify --respawn --transpileOnly ./src",
+    "start:dev": "ts-node-dev -r dotenv/config --no-notify --respawn --transpileOnly ./src",
     "start:prod": "prisma deploy && node ./index.js",
     "prisma:deploy": "prisma deploy",
     "prisma:generate": "prisma generate",
     "prisma:reset": "prisma reset",
     "prisma:seed": "prisma seed",
-    "test": "prisma reset -f && jest --config ./test/jest-e2e.json"
+    "test": "prisma reset -f && jest --setupFiles dotenv/config --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "bcrypt": "^3.0.5",

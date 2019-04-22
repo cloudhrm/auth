@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { getPrivateKey, getUserId } from '../utils'
 
-async function rotateKey(parent, args, context, info) {
+async function rotateKey(parent, args, { prisma }, info) {
   const { generateKeyPair } = require('crypto')
   const util = require('util')
   const genKeyPair = util.promisify(generateKeyPair)
@@ -17,21 +17,21 @@ async function rotateKey(parent, args, context, info) {
       format: 'pem'
     }
   })
-  const { id } = await context.prisma.createKeyPair({
+  const { id } = await prisma.createKeyPair({
     private: privateKey,
     public: publicKey
   })
   return id
 }
 
-async function createCompany(parent, args, context, info) {
-  const userId = await getUserId(context)
-  const company = await context.prisma.createCompany({
+async function createCompany(parent, args, { prisma, request }, info) {
+  const userId = await getUserId(prisma, request)
+  const company = await prisma.createCompany({
     name: args.name,
     company: args.company,
     owner: { connect: { id: userId } }
   })
-  await context.prisma.createGroup({
+  await prisma.createGroup({
     name: 'admin',
     company: { connect: { id: company.id } },
     users: { connect: [{ id: userId }] }
@@ -39,10 +39,10 @@ async function createCompany(parent, args, context, info) {
   return company
 }
 
-async function signup(parent, args, context, info) {
+async function signup(parent, args, { prisma }, info) {
   const password = await bcrypt.hash(args.password, 10)
-  const user = await context.prisma.createUser({ ...args, password })
-  const keypair = await getPrivateKey(context)
+  const user = await prisma.createUser({ ...args, password })
+  const keypair = await getPrivateKey(prisma)
   let token = ''
   if (keypair.private) {
     token = jwt.sign({ userId: user.id, keyId: keypair.id }, keypair.private, {
@@ -58,19 +58,19 @@ async function signup(parent, args, context, info) {
   }
 }
 
-async function login(parent, args, context, info) {
-  const user = await context.prisma.user({ email: args.email })
+async function login(parent, { email, password }, { prisma }, info) {
+  const user = await prisma.user({ email })
   if (!user) {
     throw new Error('No such user found')
   }
-  const groups = await context.prisma.user({ id: user.id }).groups()
+  const groups = await prisma.user({ id: user.id }).groups()
 
-  const valid = await bcrypt.compare(args.password, user.password)
+  const valid = await bcrypt.compare(password, user.password)
   if (!valid) {
     throw new Error('Invalid password')
   }
 
-  const keypair = await getPrivateKey(context)
+  const keypair = await getPrivateKey(prisma)
   let token = ''
   if (keypair.private) {
     token = jwt.sign(
