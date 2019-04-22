@@ -7,7 +7,7 @@ services:
     image: cloudhrm/auth:latest
     environment:
       - NODE_ENV=production
-      - AUTH_HOST=auth
+      - AUTH_HOST=localhost
       - AUTH_PORT=4000
       - PRISMA_CLOUD_SESSION_KEY=$PRISMA_CLOUD_SESSION_KEY
       - PRISMA_HOST=prisma
