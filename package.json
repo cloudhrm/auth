@@ -15,24 +15,24 @@
     "test": "prisma reset -f && jest --setupFiles dotenv/config --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^3.0.6",
     "consul": "^0.34.1",
     "dotenv": "^7.0.0",
     "graphql-yoga": "^1.17.4",
     "jsonwebtoken": "^8.5.1",
-    "prisma": "^1.29.2",
-    "prisma-client-lib": "^1.29.2"
+    "prisma": "^1.31.1",
+    "prisma-client-lib": "^1.31.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
     "@types/jest": "^24.0.11",
     "@types/jsonwebtoken": "^8.3.2",
-    "@types/node": "11.13.4",
+    "@types/node": "11.13.7",
     "@types/supertest": "^2.0.7",
     "jest": "^24.7.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.0.2",
     "ts-node-dev": "^1.0.0-pre.32",
-    "typescript": "^3.1.6"
+    "typescript": "^3.4.5"
   }
 }
