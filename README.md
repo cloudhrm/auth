@@ -2,6 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/cloudhrm/auth.svg?style=svg)](https://circleci.com/gh/cloudhrm/auth)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/561a39f4b6f0417d910c4e87f7cca23a)](https://www.codacy.com/app/cloudhrm/auth?utm_source=github.com&utm_medium=referral&utm_content=cloudhrm/auth&utm_campaign=Badge_Grade)
+[![Known Vulnerabilities](https://snyk.io/test/github/cloudhrm/auth/badge.svg)](https://snyk.io/test/github/cloudhrm/auth)
 
 ## TODO
 
