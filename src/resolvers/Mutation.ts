@@ -72,7 +72,7 @@ async function login(parent, { email, password }, { prisma }, info) {
 
   const keypair = await getPrivateKey(prisma)
   let token = ''
-  if (keypair.private) {
+  if (keypair && keypair.private) {
     token = jwt.sign(
       { userId: user.id, keyId: keypair.id, groups },
       keypair.private,
