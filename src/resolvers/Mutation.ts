@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import { getPrivateKey, getUserId } from '../utils'
 
-async function rotateKey(parent, args, { prisma }, info) {
+async function doRotateKey(prisma) {
   const { generateKeyPair } = require('crypto')
   const util = require('util')
   const genKeyPair = util.promisify(generateKeyPair)
@@ -17,11 +17,19 @@ async function rotateKey(parent, args, { prisma }, info) {
       format: 'pem'
     }
   })
-  const { id } = await prisma.createKeyPair({
+  const kp = await prisma.createKeyPair({
     private: privateKey,
     public: publicKey
   })
-  return id
+  return kp
+}
+
+async function rotateKey(parent, args, { prisma }, info) {
+  const newkey = await doRotateKey(prisma)
+  if (!newkey) {
+    throw new Error('Failed to generate key pair')
+  }
+  return newkey.id
 }
 
 async function createCompany(parent, args, { prisma, request }, info) {
@@ -42,15 +50,15 @@ async function createCompany(parent, args, { prisma, request }, info) {
 async function signup(parent, args, { prisma }, info) {
   const password = await bcrypt.hash(args.password, 10)
   const user = await prisma.createUser({ ...args, password })
-  const keypair = await getPrivateKey(prisma)
-  let token = ''
-  if (keypair.private) {
-    token = jwt.sign({ userId: user.id, keyId: keypair.id }, keypair.private, {
-      algorithm: 'RS256'
-    })
-  } else {
-    throw new Error('Please generate key pair')
+  let keypair = await getPrivateKey(prisma)
+  if (!keypair || !keypair.private) {
+    // Generate key if there is no one
+    keypair = await doRotateKey(prisma)
   }
+
+  const token = jwt.sign({ userId: user.id, keyId: keypair.id }, keypair.private, {
+    algorithm: 'RS256'
+  })
 
   return {
     token,
@@ -70,19 +78,18 @@ async function login(parent, { email, password }, { prisma }, info) {
     throw new Error('Invalid password')
   }
 
-  const keypair = await getPrivateKey(prisma)
-  let token = ''
-  if (keypair && keypair.private) {
-    token = jwt.sign(
-      { userId: user.id, keyId: keypair.id, groups },
-      keypair.private,
-      {
-        algorithm: 'RS256'
-      }
-    )
-  } else {
-    throw new Error('Please generate key pair')
+  let keypair = await getPrivateKey(prisma)
+  if (!keypair || !keypair.private) {
+    // Generate key if there is no one
+    keypair = await doRotateKey(prisma)
   }
+  const token = jwt.sign(
+    { userId: user.id, keyId: keypair.id, groups },
+    keypair.private,
+    {
+      algorithm: 'RS256'
+    }
+  )
 
   return {
     token,
