@@ -2,44 +2,44 @@
 // Please don't change this file manually but run `prisma generate` to update it.
 // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-import { DocumentNode } from "graphql";
+import { DocumentNode } from 'graphql'
 import {
   makePrismaClientClass,
   BaseClientOptions,
   Model
-} from "prisma-client-lib";
-import { typeDefs } from "./prisma-schema";
+} from 'prisma-client-lib'
+import { typeDefs } from './prisma-schema'
 
 export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
-  U[keyof U];
+  U[keyof U]
 
 export interface Exists {
-  company: (where?: CompanyWhereInput) => Promise<boolean>;
-  group: (where?: GroupWhereInput) => Promise<boolean>;
-  keyPair: (where?: KeyPairWhereInput) => Promise<boolean>;
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  company: (where?: CompanyWhereInput) => Promise<boolean>
+  group: (where?: GroupWhereInput) => Promise<boolean>
+  keyPair: (where?: KeyPairWhereInput) => Promise<boolean>
+  user: (where?: UserWhereInput) => Promise<boolean>
 }
 
-export interface Node {}
+export interface Node { }
 
-export type FragmentableArray<T> = Promise<Array<T>> & Fragmentable;
+export type FragmentableArray<T> = Promise<Array<T>> & Fragmentable
 
 export interface Fragmentable {
-  $fragment<T>(fragment: string | DocumentNode): Promise<T>;
+  $fragment<T>(fragment: string | DocumentNode): Promise<T>
 }
 
 export interface Prisma {
-  $exists: Exists;
+  $exists: Exists
   $graphql: <T = any>(
     query: string,
     variables?: { [key: string]: any }
-  ) => Promise<T>;
+  ) => Promise<T>
 
   /**
    * Queries
    */
 
-  company: (where: CompanyWhereUniqueInput) => CompanyPromise;
+  company: (where: CompanyWhereUniqueInput) => CompanyPromise
   companies: (args?: {
     where?: CompanyWhereInput;
     orderBy?: CompanyOrderByInput;
@@ -48,7 +48,7 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<Company>;
+  }) => FragmentableArray<Company>
   companiesConnection: (args?: {
     where?: CompanyWhereInput;
     orderBy?: CompanyOrderByInput;
@@ -57,8 +57,8 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => CompanyConnectionPromise;
-  group: (where: GroupWhereUniqueInput) => GroupPromise;
+  }) => CompanyConnectionPromise
+  group: (where: GroupWhereUniqueInput) => GroupPromise
   groups: (args?: {
     where?: GroupWhereInput;
     orderBy?: GroupOrderByInput;
@@ -67,7 +67,7 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<Group>;
+  }) => FragmentableArray<Group>
   groupsConnection: (args?: {
     where?: GroupWhereInput;
     orderBy?: GroupOrderByInput;
@@ -76,8 +76,8 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => GroupConnectionPromise;
-  keyPair: (where: KeyPairWhereUniqueInput) => KeyPairPromise;
+  }) => GroupConnectionPromise
+  keyPair: (where: KeyPairWhereUniqueInput) => KeyPairPromise
   keyPairs: (args?: {
     where?: KeyPairWhereInput;
     orderBy?: KeyPairOrderByInput;
@@ -86,7 +86,7 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<KeyPair>;
+  }) => FragmentableArray<KeyPair>
   keyPairsConnection: (args?: {
     where?: KeyPairWhereInput;
     orderBy?: KeyPairOrderByInput;
@@ -95,8 +95,8 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => KeyPairConnectionPromise;
-  user: (where: UserWhereUniqueInput) => UserPromise;
+  }) => KeyPairConnectionPromise
+  user: (where: UserWhereUniqueInput) => UserPromise
   users: (args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
@@ -105,7 +105,7 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<User>;
+  }) => FragmentableArray<User>
   usersConnection: (args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
@@ -114,835 +114,835 @@ export interface Prisma {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => UserConnectionPromise;
-  node: (args: { id: ID_Output }) => Node;
+  }) => UserConnectionPromise
+  node: (args: { id: ID_Output }) => Node
 
   /**
    * Mutations
    */
 
-  createCompany: (data: CompanyCreateInput) => CompanyPromise;
+  createCompany: (data: CompanyCreateInput) => CompanyPromise
   updateCompany: (args: {
     data: CompanyUpdateInput;
     where: CompanyWhereUniqueInput;
-  }) => CompanyPromise;
+  }) => CompanyPromise
   updateManyCompanies: (args: {
     data: CompanyUpdateManyMutationInput;
     where?: CompanyWhereInput;
-  }) => BatchPayloadPromise;
+  }) => BatchPayloadPromise
   upsertCompany: (args: {
     where: CompanyWhereUniqueInput;
     create: CompanyCreateInput;
     update: CompanyUpdateInput;
-  }) => CompanyPromise;
-  deleteCompany: (where: CompanyWhereUniqueInput) => CompanyPromise;
-  deleteManyCompanies: (where?: CompanyWhereInput) => BatchPayloadPromise;
-  createGroup: (data: GroupCreateInput) => GroupPromise;
+  }) => CompanyPromise
+  deleteCompany: (where: CompanyWhereUniqueInput) => CompanyPromise
+  deleteManyCompanies: (where?: CompanyWhereInput) => BatchPayloadPromise
+  createGroup: (data: GroupCreateInput) => GroupPromise
   updateGroup: (args: {
     data: GroupUpdateInput;
     where: GroupWhereUniqueInput;
-  }) => GroupPromise;
+  }) => GroupPromise
   updateManyGroups: (args: {
     data: GroupUpdateManyMutationInput;
     where?: GroupWhereInput;
-  }) => BatchPayloadPromise;
+  }) => BatchPayloadPromise
   upsertGroup: (args: {
     where: GroupWhereUniqueInput;
     create: GroupCreateInput;
     update: GroupUpdateInput;
-  }) => GroupPromise;
-  deleteGroup: (where: GroupWhereUniqueInput) => GroupPromise;
-  deleteManyGroups: (where?: GroupWhereInput) => BatchPayloadPromise;
-  createKeyPair: (data: KeyPairCreateInput) => KeyPairPromise;
+  }) => GroupPromise
+  deleteGroup: (where: GroupWhereUniqueInput) => GroupPromise
+  deleteManyGroups: (where?: GroupWhereInput) => BatchPayloadPromise
+  createKeyPair: (data: KeyPairCreateInput) => KeyPairPromise
   updateKeyPair: (args: {
     data: KeyPairUpdateInput;
     where: KeyPairWhereUniqueInput;
-  }) => KeyPairPromise;
+  }) => KeyPairPromise
   updateManyKeyPairs: (args: {
     data: KeyPairUpdateManyMutationInput;
     where?: KeyPairWhereInput;
-  }) => BatchPayloadPromise;
+  }) => BatchPayloadPromise
   upsertKeyPair: (args: {
     where: KeyPairWhereUniqueInput;
     create: KeyPairCreateInput;
     update: KeyPairUpdateInput;
-  }) => KeyPairPromise;
-  deleteKeyPair: (where: KeyPairWhereUniqueInput) => KeyPairPromise;
-  deleteManyKeyPairs: (where?: KeyPairWhereInput) => BatchPayloadPromise;
-  createUser: (data: UserCreateInput) => UserPromise;
+  }) => KeyPairPromise
+  deleteKeyPair: (where: KeyPairWhereUniqueInput) => KeyPairPromise
+  deleteManyKeyPairs: (where?: KeyPairWhereInput) => BatchPayloadPromise
+  createUser: (data: UserCreateInput) => UserPromise
   updateUser: (args: {
     data: UserUpdateInput;
     where: UserWhereUniqueInput;
-  }) => UserPromise;
+  }) => UserPromise
   updateManyUsers: (args: {
     data: UserUpdateManyMutationInput;
     where?: UserWhereInput;
-  }) => BatchPayloadPromise;
+  }) => BatchPayloadPromise
   upsertUser: (args: {
     where: UserWhereUniqueInput;
     create: UserCreateInput;
     update: UserUpdateInput;
-  }) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  }) => UserPromise
+  deleteUser: (where: UserWhereUniqueInput) => UserPromise
+  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise
 
   /**
    * Subscriptions
    */
 
-  $subscribe: Subscription;
+  $subscribe: Subscription
 }
 
 export interface Subscription {
   company: (
     where?: CompanySubscriptionWhereInput
-  ) => CompanySubscriptionPayloadSubscription;
+  ) => CompanySubscriptionPayloadSubscription
   group: (
     where?: GroupSubscriptionWhereInput
-  ) => GroupSubscriptionPayloadSubscription;
+  ) => GroupSubscriptionPayloadSubscription
   keyPair: (
     where?: KeyPairSubscriptionWhereInput
-  ) => KeyPairSubscriptionPayloadSubscription;
+  ) => KeyPairSubscriptionPayloadSubscription
   user: (
     where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  ) => UserSubscriptionPayloadSubscription
 }
 
 export interface ClientConstructor<T> {
-  new (options?: BaseClientOptions): T;
+  new(options?: BaseClientOptions): T
 }
 
 /**
  * Types
  */
 
-export type GroupOrderByInput = "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC";
+export type GroupOrderByInput = 'id_ASC' | 'id_DESC' | 'name_ASC' | 'name_DESC'
 
 export type UserOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "email_ASC"
-  | "email_DESC"
-  | "password_ASC"
-  | "password_DESC";
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'email_ASC'
+  | 'email_DESC'
+  | 'password_ASC'
+  | 'password_DESC'
 
 export type CompanyOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "homepage_ASC"
-  | "homepage_DESC";
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'name_ASC'
+  | 'name_DESC'
+  | 'homepage_ASC'
+  | 'homepage_DESC'
 
 export type KeyPairOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "public_ASC"
-  | "public_DESC"
-  | "private_ASC"
-  | "private_DESC";
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'public_ASC'
+  | 'public_DESC'
+  | 'private_ASC'
+  | 'private_DESC'
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+export type MutationType = 'CREATED' | 'UPDATED' | 'DELETED'
 
 export type CompanyWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
-}>;
+}>
 
 export interface GroupWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  company?: CompanyWhereInput;
-  users_every?: UserWhereInput;
-  users_some?: UserWhereInput;
-  users_none?: UserWhereInput;
-  AND?: GroupWhereInput[] | GroupWhereInput;
-  OR?: GroupWhereInput[] | GroupWhereInput;
-  NOT?: GroupWhereInput[] | GroupWhereInput;
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  name?: String
+  name_not?: String
+  name_in?: String[] | String
+  name_not_in?: String[] | String
+  name_lt?: String
+  name_lte?: String
+  name_gt?: String
+  name_gte?: String
+  name_contains?: String
+  name_not_contains?: String
+  name_starts_with?: String
+  name_not_starts_with?: String
+  name_ends_with?: String
+  name_not_ends_with?: String
+  company?: CompanyWhereInput
+  users_every?: UserWhereInput
+  users_some?: UserWhereInput
+  users_none?: UserWhereInput
+  AND?: GroupWhereInput[] | GroupWhereInput
+  OR?: GroupWhereInput[] | GroupWhereInput
+  NOT?: GroupWhereInput[] | GroupWhereInput
 }
 
 export interface CompanyWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  homepage?: String;
-  homepage_not?: String;
-  homepage_in?: String[] | String;
-  homepage_not_in?: String[] | String;
-  homepage_lt?: String;
-  homepage_lte?: String;
-  homepage_gt?: String;
-  homepage_gte?: String;
-  homepage_contains?: String;
-  homepage_not_contains?: String;
-  homepage_starts_with?: String;
-  homepage_not_starts_with?: String;
-  homepage_ends_with?: String;
-  homepage_not_ends_with?: String;
-  owner?: UserWhereInput;
-  groups_every?: GroupWhereInput;
-  groups_some?: GroupWhereInput;
-  groups_none?: GroupWhereInput;
-  AND?: CompanyWhereInput[] | CompanyWhereInput;
-  OR?: CompanyWhereInput[] | CompanyWhereInput;
-  NOT?: CompanyWhereInput[] | CompanyWhereInput;
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  name?: String
+  name_not?: String
+  name_in?: String[] | String
+  name_not_in?: String[] | String
+  name_lt?: String
+  name_lte?: String
+  name_gt?: String
+  name_gte?: String
+  name_contains?: String
+  name_not_contains?: String
+  name_starts_with?: String
+  name_not_starts_with?: String
+  name_ends_with?: String
+  name_not_ends_with?: String
+  homepage?: String
+  homepage_not?: String
+  homepage_in?: String[] | String
+  homepage_not_in?: String[] | String
+  homepage_lt?: String
+  homepage_lte?: String
+  homepage_gt?: String
+  homepage_gte?: String
+  homepage_contains?: String
+  homepage_not_contains?: String
+  homepage_starts_with?: String
+  homepage_not_starts_with?: String
+  homepage_ends_with?: String
+  homepage_not_ends_with?: String
+  owner?: UserWhereInput
+  groups_every?: GroupWhereInput
+  groups_some?: GroupWhereInput
+  groups_none?: GroupWhereInput
+  AND?: CompanyWhereInput[] | CompanyWhereInput
+  OR?: CompanyWhereInput[] | CompanyWhereInput
+  NOT?: CompanyWhereInput[] | CompanyWhereInput
 }
 
 export interface UserWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
-  company?: CompanyWhereInput;
-  groups_every?: GroupWhereInput;
-  groups_some?: GroupWhereInput;
-  groups_none?: GroupWhereInput;
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  name?: String
+  name_not?: String
+  name_in?: String[] | String
+  name_not_in?: String[] | String
+  name_lt?: String
+  name_lte?: String
+  name_gt?: String
+  name_gte?: String
+  name_contains?: String
+  name_not_contains?: String
+  name_starts_with?: String
+  name_not_starts_with?: String
+  name_ends_with?: String
+  name_not_ends_with?: String
+  email?: String
+  email_not?: String
+  email_in?: String[] | String
+  email_not_in?: String[] | String
+  email_lt?: String
+  email_lte?: String
+  email_gt?: String
+  email_gte?: String
+  email_contains?: String
+  email_not_contains?: String
+  email_starts_with?: String
+  email_not_starts_with?: String
+  email_ends_with?: String
+  email_not_ends_with?: String
+  password?: String
+  password_not?: String
+  password_in?: String[] | String
+  password_not_in?: String[] | String
+  password_lt?: String
+  password_lte?: String
+  password_gt?: String
+  password_gte?: String
+  password_contains?: String
+  password_not_contains?: String
+  password_starts_with?: String
+  password_not_starts_with?: String
+  password_ends_with?: String
+  password_not_ends_with?: String
+  company?: CompanyWhereInput
+  groups_every?: GroupWhereInput
+  groups_some?: GroupWhereInput
+  groups_none?: GroupWhereInput
+  AND?: UserWhereInput[] | UserWhereInput
+  OR?: UserWhereInput[] | UserWhereInput
+  NOT?: UserWhereInput[] | UserWhereInput
 }
 
 export type GroupWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
-}>;
+}>
 
 export type KeyPairWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
-}>;
+}>
 
 export interface KeyPairWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  public?: String;
-  public_not?: String;
-  public_in?: String[] | String;
-  public_not_in?: String[] | String;
-  public_lt?: String;
-  public_lte?: String;
-  public_gt?: String;
-  public_gte?: String;
-  public_contains?: String;
-  public_not_contains?: String;
-  public_starts_with?: String;
-  public_not_starts_with?: String;
-  public_ends_with?: String;
-  public_not_ends_with?: String;
-  private?: String;
-  private_not?: String;
-  private_in?: String[] | String;
-  private_not_in?: String[] | String;
-  private_lt?: String;
-  private_lte?: String;
-  private_gt?: String;
-  private_gte?: String;
-  private_contains?: String;
-  private_not_contains?: String;
-  private_starts_with?: String;
-  private_not_starts_with?: String;
-  private_ends_with?: String;
-  private_not_ends_with?: String;
-  AND?: KeyPairWhereInput[] | KeyPairWhereInput;
-  OR?: KeyPairWhereInput[] | KeyPairWhereInput;
-  NOT?: KeyPairWhereInput[] | KeyPairWhereInput;
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  public?: String
+  public_not?: String
+  public_in?: String[] | String
+  public_not_in?: String[] | String
+  public_lt?: String
+  public_lte?: String
+  public_gt?: String
+  public_gte?: String
+  public_contains?: String
+  public_not_contains?: String
+  public_starts_with?: String
+  public_not_starts_with?: String
+  public_ends_with?: String
+  public_not_ends_with?: String
+  private?: String
+  private_not?: String
+  private_in?: String[] | String
+  private_not_in?: String[] | String
+  private_lt?: String
+  private_lte?: String
+  private_gt?: String
+  private_gte?: String
+  private_contains?: String
+  private_not_contains?: String
+  private_starts_with?: String
+  private_not_starts_with?: String
+  private_ends_with?: String
+  private_not_ends_with?: String
+  AND?: KeyPairWhereInput[] | KeyPairWhereInput
+  OR?: KeyPairWhereInput[] | KeyPairWhereInput
+  NOT?: KeyPairWhereInput[] | KeyPairWhereInput
 }
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
   email?: String;
-}>;
+}>
 
 export interface CompanyCreateInput {
-  name: String;
-  homepage?: String;
-  owner?: UserCreateOneWithoutCompanyInput;
-  groups?: GroupCreateManyWithoutCompanyInput;
+  name: String
+  homepage?: String
+  owner?: UserCreateOneWithoutCompanyInput
+  groups?: GroupCreateManyWithoutCompanyInput
 }
 
 export interface UserCreateOneWithoutCompanyInput {
-  create?: UserCreateWithoutCompanyInput;
-  connect?: UserWhereUniqueInput;
+  create?: UserCreateWithoutCompanyInput
+  connect?: UserWhereUniqueInput
 }
 
 export interface UserCreateWithoutCompanyInput {
-  name: String;
-  email: String;
-  password: String;
-  groups?: GroupCreateManyWithoutUsersInput;
+  name: String
+  email: String
+  password: String
+  groups?: GroupCreateManyWithoutUsersInput
 }
 
 export interface GroupCreateManyWithoutUsersInput {
-  create?: GroupCreateWithoutUsersInput[] | GroupCreateWithoutUsersInput;
-  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
+  create?: GroupCreateWithoutUsersInput[] | GroupCreateWithoutUsersInput
+  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
 }
 
 export interface GroupCreateWithoutUsersInput {
-  name: String;
-  company: CompanyCreateOneWithoutGroupsInput;
+  name: String
+  company: CompanyCreateOneWithoutGroupsInput
 }
 
 export interface CompanyCreateOneWithoutGroupsInput {
-  create?: CompanyCreateWithoutGroupsInput;
-  connect?: CompanyWhereUniqueInput;
+  create?: CompanyCreateWithoutGroupsInput
+  connect?: CompanyWhereUniqueInput
 }
 
 export interface CompanyCreateWithoutGroupsInput {
-  name: String;
-  homepage?: String;
-  owner?: UserCreateOneWithoutCompanyInput;
+  name: String
+  homepage?: String
+  owner?: UserCreateOneWithoutCompanyInput
 }
 
 export interface GroupCreateManyWithoutCompanyInput {
-  create?: GroupCreateWithoutCompanyInput[] | GroupCreateWithoutCompanyInput;
-  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
+  create?: GroupCreateWithoutCompanyInput[] | GroupCreateWithoutCompanyInput
+  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
 }
 
 export interface GroupCreateWithoutCompanyInput {
-  name: String;
-  users?: UserCreateManyWithoutGroupsInput;
+  name: String
+  users?: UserCreateManyWithoutGroupsInput
 }
 
 export interface UserCreateManyWithoutGroupsInput {
-  create?: UserCreateWithoutGroupsInput[] | UserCreateWithoutGroupsInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  create?: UserCreateWithoutGroupsInput[] | UserCreateWithoutGroupsInput
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
 }
 
 export interface UserCreateWithoutGroupsInput {
-  name: String;
-  email: String;
-  password: String;
-  company?: CompanyCreateOneWithoutOwnerInput;
+  name: String
+  email: String
+  password: String
+  company?: CompanyCreateOneWithoutOwnerInput
 }
 
 export interface CompanyCreateOneWithoutOwnerInput {
-  create?: CompanyCreateWithoutOwnerInput;
-  connect?: CompanyWhereUniqueInput;
+  create?: CompanyCreateWithoutOwnerInput
+  connect?: CompanyWhereUniqueInput
 }
 
 export interface CompanyCreateWithoutOwnerInput {
-  name: String;
-  homepage?: String;
-  groups?: GroupCreateManyWithoutCompanyInput;
+  name: String
+  homepage?: String
+  groups?: GroupCreateManyWithoutCompanyInput
 }
 
 export interface CompanyUpdateInput {
-  name?: String;
-  homepage?: String;
-  owner?: UserUpdateOneWithoutCompanyInput;
-  groups?: GroupUpdateManyWithoutCompanyInput;
+  name?: String
+  homepage?: String
+  owner?: UserUpdateOneWithoutCompanyInput
+  groups?: GroupUpdateManyWithoutCompanyInput
 }
 
 export interface UserUpdateOneWithoutCompanyInput {
-  create?: UserCreateWithoutCompanyInput;
-  update?: UserUpdateWithoutCompanyDataInput;
-  upsert?: UserUpsertWithoutCompanyInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: UserWhereUniqueInput;
+  create?: UserCreateWithoutCompanyInput
+  update?: UserUpdateWithoutCompanyDataInput
+  upsert?: UserUpsertWithoutCompanyInput
+  delete?: Boolean
+  disconnect?: Boolean
+  connect?: UserWhereUniqueInput
 }
 
 export interface UserUpdateWithoutCompanyDataInput {
-  name?: String;
-  email?: String;
-  password?: String;
-  groups?: GroupUpdateManyWithoutUsersInput;
+  name?: String
+  email?: String
+  password?: String
+  groups?: GroupUpdateManyWithoutUsersInput
 }
 
 export interface GroupUpdateManyWithoutUsersInput {
-  create?: GroupCreateWithoutUsersInput[] | GroupCreateWithoutUsersInput;
-  delete?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
-  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
-  set?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
-  disconnect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
+  create?: GroupCreateWithoutUsersInput[] | GroupCreateWithoutUsersInput
+  delete?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
+  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
+  set?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
+  disconnect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
   update?:
-    | GroupUpdateWithWhereUniqueWithoutUsersInput[]
-    | GroupUpdateWithWhereUniqueWithoutUsersInput;
+  | GroupUpdateWithWhereUniqueWithoutUsersInput[]
+  | GroupUpdateWithWhereUniqueWithoutUsersInput
   upsert?:
-    | GroupUpsertWithWhereUniqueWithoutUsersInput[]
-    | GroupUpsertWithWhereUniqueWithoutUsersInput;
-  deleteMany?: GroupScalarWhereInput[] | GroupScalarWhereInput;
+  | GroupUpsertWithWhereUniqueWithoutUsersInput[]
+  | GroupUpsertWithWhereUniqueWithoutUsersInput
+  deleteMany?: GroupScalarWhereInput[] | GroupScalarWhereInput
   updateMany?:
-    | GroupUpdateManyWithWhereNestedInput[]
-    | GroupUpdateManyWithWhereNestedInput;
+  | GroupUpdateManyWithWhereNestedInput[]
+  | GroupUpdateManyWithWhereNestedInput
 }
 
 export interface GroupUpdateWithWhereUniqueWithoutUsersInput {
-  where: GroupWhereUniqueInput;
-  data: GroupUpdateWithoutUsersDataInput;
+  where: GroupWhereUniqueInput
+  data: GroupUpdateWithoutUsersDataInput
 }
 
 export interface GroupUpdateWithoutUsersDataInput {
-  name?: String;
-  company?: CompanyUpdateOneRequiredWithoutGroupsInput;
+  name?: String
+  company?: CompanyUpdateOneRequiredWithoutGroupsInput
 }
 
 export interface CompanyUpdateOneRequiredWithoutGroupsInput {
-  create?: CompanyCreateWithoutGroupsInput;
-  update?: CompanyUpdateWithoutGroupsDataInput;
-  upsert?: CompanyUpsertWithoutGroupsInput;
-  connect?: CompanyWhereUniqueInput;
+  create?: CompanyCreateWithoutGroupsInput
+  update?: CompanyUpdateWithoutGroupsDataInput
+  upsert?: CompanyUpsertWithoutGroupsInput
+  connect?: CompanyWhereUniqueInput
 }
 
 export interface CompanyUpdateWithoutGroupsDataInput {
-  name?: String;
-  homepage?: String;
-  owner?: UserUpdateOneWithoutCompanyInput;
+  name?: String
+  homepage?: String
+  owner?: UserUpdateOneWithoutCompanyInput
 }
 
 export interface CompanyUpsertWithoutGroupsInput {
-  update: CompanyUpdateWithoutGroupsDataInput;
-  create: CompanyCreateWithoutGroupsInput;
+  update: CompanyUpdateWithoutGroupsDataInput
+  create: CompanyCreateWithoutGroupsInput
 }
 
 export interface GroupUpsertWithWhereUniqueWithoutUsersInput {
-  where: GroupWhereUniqueInput;
-  update: GroupUpdateWithoutUsersDataInput;
-  create: GroupCreateWithoutUsersInput;
+  where: GroupWhereUniqueInput
+  update: GroupUpdateWithoutUsersDataInput
+  create: GroupCreateWithoutUsersInput
 }
 
 export interface GroupScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  AND?: GroupScalarWhereInput[] | GroupScalarWhereInput;
-  OR?: GroupScalarWhereInput[] | GroupScalarWhereInput;
-  NOT?: GroupScalarWhereInput[] | GroupScalarWhereInput;
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  name?: String
+  name_not?: String
+  name_in?: String[] | String
+  name_not_in?: String[] | String
+  name_lt?: String
+  name_lte?: String
+  name_gt?: String
+  name_gte?: String
+  name_contains?: String
+  name_not_contains?: String
+  name_starts_with?: String
+  name_not_starts_with?: String
+  name_ends_with?: String
+  name_not_ends_with?: String
+  AND?: GroupScalarWhereInput[] | GroupScalarWhereInput
+  OR?: GroupScalarWhereInput[] | GroupScalarWhereInput
+  NOT?: GroupScalarWhereInput[] | GroupScalarWhereInput
 }
 
 export interface GroupUpdateManyWithWhereNestedInput {
-  where: GroupScalarWhereInput;
-  data: GroupUpdateManyDataInput;
+  where: GroupScalarWhereInput
+  data: GroupUpdateManyDataInput
 }
 
 export interface GroupUpdateManyDataInput {
-  name?: String;
+  name?: String
 }
 
 export interface UserUpsertWithoutCompanyInput {
-  update: UserUpdateWithoutCompanyDataInput;
-  create: UserCreateWithoutCompanyInput;
+  update: UserUpdateWithoutCompanyDataInput
+  create: UserCreateWithoutCompanyInput
 }
 
 export interface GroupUpdateManyWithoutCompanyInput {
-  create?: GroupCreateWithoutCompanyInput[] | GroupCreateWithoutCompanyInput;
-  delete?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
-  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
-  set?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
-  disconnect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput;
+  create?: GroupCreateWithoutCompanyInput[] | GroupCreateWithoutCompanyInput
+  delete?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
+  connect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
+  set?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
+  disconnect?: GroupWhereUniqueInput[] | GroupWhereUniqueInput
   update?:
-    | GroupUpdateWithWhereUniqueWithoutCompanyInput[]
-    | GroupUpdateWithWhereUniqueWithoutCompanyInput;
+  | GroupUpdateWithWhereUniqueWithoutCompanyInput[]
+  | GroupUpdateWithWhereUniqueWithoutCompanyInput
   upsert?:
-    | GroupUpsertWithWhereUniqueWithoutCompanyInput[]
-    | GroupUpsertWithWhereUniqueWithoutCompanyInput;
-  deleteMany?: GroupScalarWhereInput[] | GroupScalarWhereInput;
+  | GroupUpsertWithWhereUniqueWithoutCompanyInput[]
+  | GroupUpsertWithWhereUniqueWithoutCompanyInput
+  deleteMany?: GroupScalarWhereInput[] | GroupScalarWhereInput
   updateMany?:
-    | GroupUpdateManyWithWhereNestedInput[]
-    | GroupUpdateManyWithWhereNestedInput;
+  | GroupUpdateManyWithWhereNestedInput[]
+  | GroupUpdateManyWithWhereNestedInput
 }
 
 export interface GroupUpdateWithWhereUniqueWithoutCompanyInput {
-  where: GroupWhereUniqueInput;
-  data: GroupUpdateWithoutCompanyDataInput;
+  where: GroupWhereUniqueInput
+  data: GroupUpdateWithoutCompanyDataInput
 }
 
 export interface GroupUpdateWithoutCompanyDataInput {
-  name?: String;
-  users?: UserUpdateManyWithoutGroupsInput;
+  name?: String
+  users?: UserUpdateManyWithoutGroupsInput
 }
 
 export interface UserUpdateManyWithoutGroupsInput {
-  create?: UserCreateWithoutGroupsInput[] | UserCreateWithoutGroupsInput;
-  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  set?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  create?: UserCreateWithoutGroupsInput[] | UserCreateWithoutGroupsInput
+  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  set?: UserWhereUniqueInput[] | UserWhereUniqueInput
+  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput
   update?:
-    | UserUpdateWithWhereUniqueWithoutGroupsInput[]
-    | UserUpdateWithWhereUniqueWithoutGroupsInput;
+  | UserUpdateWithWhereUniqueWithoutGroupsInput[]
+  | UserUpdateWithWhereUniqueWithoutGroupsInput
   upsert?:
-    | UserUpsertWithWhereUniqueWithoutGroupsInput[]
-    | UserUpsertWithWhereUniqueWithoutGroupsInput;
-  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput;
+  | UserUpsertWithWhereUniqueWithoutGroupsInput[]
+  | UserUpsertWithWhereUniqueWithoutGroupsInput
+  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput
   updateMany?:
-    | UserUpdateManyWithWhereNestedInput[]
-    | UserUpdateManyWithWhereNestedInput;
+  | UserUpdateManyWithWhereNestedInput[]
+  | UserUpdateManyWithWhereNestedInput
 }
 
 export interface UserUpdateWithWhereUniqueWithoutGroupsInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutGroupsDataInput;
+  where: UserWhereUniqueInput
+  data: UserUpdateWithoutGroupsDataInput
 }
 
 export interface UserUpdateWithoutGroupsDataInput {
-  name?: String;
-  email?: String;
-  password?: String;
-  company?: CompanyUpdateOneWithoutOwnerInput;
+  name?: String
+  email?: String
+  password?: String
+  company?: CompanyUpdateOneWithoutOwnerInput
 }
 
 export interface CompanyUpdateOneWithoutOwnerInput {
-  create?: CompanyCreateWithoutOwnerInput;
-  update?: CompanyUpdateWithoutOwnerDataInput;
-  upsert?: CompanyUpsertWithoutOwnerInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: CompanyWhereUniqueInput;
+  create?: CompanyCreateWithoutOwnerInput
+  update?: CompanyUpdateWithoutOwnerDataInput
+  upsert?: CompanyUpsertWithoutOwnerInput
+  delete?: Boolean
+  disconnect?: Boolean
+  connect?: CompanyWhereUniqueInput
 }
 
 export interface CompanyUpdateWithoutOwnerDataInput {
-  name?: String;
-  homepage?: String;
-  groups?: GroupUpdateManyWithoutCompanyInput;
+  name?: String
+  homepage?: String
+  groups?: GroupUpdateManyWithoutCompanyInput
 }
 
 export interface CompanyUpsertWithoutOwnerInput {
-  update: CompanyUpdateWithoutOwnerDataInput;
-  create: CompanyCreateWithoutOwnerInput;
+  update: CompanyUpdateWithoutOwnerDataInput
+  create: CompanyCreateWithoutOwnerInput
 }
 
 export interface UserUpsertWithWhereUniqueWithoutGroupsInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutGroupsDataInput;
-  create: UserCreateWithoutGroupsInput;
+  where: UserWhereUniqueInput
+  update: UserUpdateWithoutGroupsDataInput
+  create: UserCreateWithoutGroupsInput
 }
 
 export interface UserScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
-  AND?: UserScalarWhereInput[] | UserScalarWhereInput;
-  OR?: UserScalarWhereInput[] | UserScalarWhereInput;
-  NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
+  id?: ID_Input
+  id_not?: ID_Input
+  id_in?: ID_Input[] | ID_Input
+  id_not_in?: ID_Input[] | ID_Input
+  id_lt?: ID_Input
+  id_lte?: ID_Input
+  id_gt?: ID_Input
+  id_gte?: ID_Input
+  id_contains?: ID_Input
+  id_not_contains?: ID_Input
+  id_starts_with?: ID_Input
+  id_not_starts_with?: ID_Input
+  id_ends_with?: ID_Input
+  id_not_ends_with?: ID_Input
+  name?: String
+  name_not?: String
+  name_in?: String[] | String
+  name_not_in?: String[] | String
+  name_lt?: String
+  name_lte?: String
+  name_gt?: String
+  name_gte?: String
+  name_contains?: String
+  name_not_contains?: String
+  name_starts_with?: String
+  name_not_starts_with?: String
+  name_ends_with?: String
+  name_not_ends_with?: String
+  email?: String
+  email_not?: String
+  email_in?: String[] | String
+  email_not_in?: String[] | String
+  email_lt?: String
+  email_lte?: String
+  email_gt?: String
+  email_gte?: String
+  email_contains?: String
+  email_not_contains?: String
+  email_starts_with?: String
+  email_not_starts_with?: String
+  email_ends_with?: String
+  email_not_ends_with?: String
+  password?: String
+  password_not?: String
+  password_in?: String[] | String
+  password_not_in?: String[] | String
+  password_lt?: String
+  password_lte?: String
+  password_gt?: String
+  password_gte?: String
+  password_contains?: String
+  password_not_contains?: String
+  password_starts_with?: String
+  password_not_starts_with?: String
+  password_ends_with?: String
+  password_not_ends_with?: String
+  AND?: UserScalarWhereInput[] | UserScalarWhereInput
+  OR?: UserScalarWhereInput[] | UserScalarWhereInput
+  NOT?: UserScalarWhereInput[] | UserScalarWhereInput
 }
 
 export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
+  where: UserScalarWhereInput
+  data: UserUpdateManyDataInput
 }
 
 export interface UserUpdateManyDataInput {
-  name?: String;
-  email?: String;
-  password?: String;
+  name?: String
+  email?: String
+  password?: String
 }
 
 export interface GroupUpsertWithWhereUniqueWithoutCompanyInput {
-  where: GroupWhereUniqueInput;
-  update: GroupUpdateWithoutCompanyDataInput;
-  create: GroupCreateWithoutCompanyInput;
+  where: GroupWhereUniqueInput
+  update: GroupUpdateWithoutCompanyDataInput
+  create: GroupCreateWithoutCompanyInput
 }
 
 export interface CompanyUpdateManyMutationInput {
-  name?: String;
-  homepage?: String;
+  name?: String
+  homepage?: String
 }
 
 export interface GroupCreateInput {
-  name: String;
-  company: CompanyCreateOneWithoutGroupsInput;
-  users?: UserCreateManyWithoutGroupsInput;
+  name: String
+  company: CompanyCreateOneWithoutGroupsInput
+  users?: UserCreateManyWithoutGroupsInput
 }
 
 export interface GroupUpdateInput {
-  name?: String;
-  company?: CompanyUpdateOneRequiredWithoutGroupsInput;
-  users?: UserUpdateManyWithoutGroupsInput;
+  name?: String
+  company?: CompanyUpdateOneRequiredWithoutGroupsInput
+  users?: UserUpdateManyWithoutGroupsInput
 }
 
 export interface GroupUpdateManyMutationInput {
-  name?: String;
+  name?: String
 }
 
 export interface KeyPairCreateInput {
-  public: String;
-  private: String;
+  public: String
+  private: String
 }
 
 export interface KeyPairUpdateInput {
-  public?: String;
-  private?: String;
+  public?: String
+  private?: String
 }
 
 export interface KeyPairUpdateManyMutationInput {
-  public?: String;
-  private?: String;
+  public?: String
+  private?: String
 }
 
 export interface UserCreateInput {
-  name: String;
-  email: String;
-  password: String;
-  company?: CompanyCreateOneWithoutOwnerInput;
-  groups?: GroupCreateManyWithoutUsersInput;
+  name: String
+  email: String
+  password: String
+  company?: CompanyCreateOneWithoutOwnerInput
+  groups?: GroupCreateManyWithoutUsersInput
 }
 
 export interface UserUpdateInput {
-  name?: String;
-  email?: String;
-  password?: String;
-  company?: CompanyUpdateOneWithoutOwnerInput;
-  groups?: GroupUpdateManyWithoutUsersInput;
+  name?: String
+  email?: String
+  password?: String
+  company?: CompanyUpdateOneWithoutOwnerInput
+  groups?: GroupUpdateManyWithoutUsersInput
 }
 
 export interface UserUpdateManyMutationInput {
-  name?: String;
-  email?: String;
-  password?: String;
+  name?: String
+  email?: String
+  password?: String
 }
 
 export interface CompanySubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: CompanyWhereInput;
-  AND?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput;
-  OR?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput;
-  NOT?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput;
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: CompanyWhereInput
+  AND?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput
+  OR?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput
+  NOT?: CompanySubscriptionWhereInput[] | CompanySubscriptionWhereInput
 }
 
 export interface GroupSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: GroupWhereInput;
-  AND?: GroupSubscriptionWhereInput[] | GroupSubscriptionWhereInput;
-  OR?: GroupSubscriptionWhereInput[] | GroupSubscriptionWhereInput;
-  NOT?: GroupSubscriptionWhereInput[] | GroupSubscriptionWhereInput;
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: GroupWhereInput
+  AND?: GroupSubscriptionWhereInput[] | GroupSubscriptionWhereInput
+  OR?: GroupSubscriptionWhereInput[] | GroupSubscriptionWhereInput
+  NOT?: GroupSubscriptionWhereInput[] | GroupSubscriptionWhereInput
 }
 
 export interface KeyPairSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: KeyPairWhereInput;
-  AND?: KeyPairSubscriptionWhereInput[] | KeyPairSubscriptionWhereInput;
-  OR?: KeyPairSubscriptionWhereInput[] | KeyPairSubscriptionWhereInput;
-  NOT?: KeyPairSubscriptionWhereInput[] | KeyPairSubscriptionWhereInput;
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: KeyPairWhereInput
+  AND?: KeyPairSubscriptionWhereInput[] | KeyPairSubscriptionWhereInput
+  OR?: KeyPairSubscriptionWhereInput[] | KeyPairSubscriptionWhereInput
+  NOT?: KeyPairSubscriptionWhereInput[] | KeyPairSubscriptionWhereInput
 }
 
 export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  mutation_in?: MutationType[] | MutationType
+  updatedFields_contains?: String
+  updatedFields_contains_every?: String[] | String
+  updatedFields_contains_some?: String[] | String
+  node?: UserWhereInput
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
 }
 
 export interface NodeNode {
-  id: ID_Output;
+  id: ID_Output
 }
 
 export interface Company {
-  id: ID_Output;
-  name: String;
-  homepage?: String;
+  id: ID_Output
+  name: String
+  homepage?: String
 }
 
 export interface CompanyPromise extends Promise<Company>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  homepage: () => Promise<String>;
-  owner: <T = UserPromise>() => T;
+  id: () => Promise<ID_Output>
+  name: () => Promise<String>
+  homepage: () => Promise<String>
+  owner: <T = UserPromise>() => T
   groups: <T = FragmentableArray<Group>>(args?: {
     where?: GroupWhereInput;
     orderBy?: GroupOrderByInput;
@@ -951,16 +951,16 @@ export interface CompanyPromise extends Promise<Company>, Fragmentable {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => T;
+  }) => T
 }
 
 export interface CompanySubscription
   extends Promise<AsyncIterator<Company>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  homepage: () => Promise<AsyncIterator<String>>;
-  owner: <T = UserSubscription>() => T;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  name: () => Promise<AsyncIterator<String>>
+  homepage: () => Promise<AsyncIterator<String>>
+  owner: <T = UserSubscription>() => T
   groups: <T = Promise<AsyncIterator<GroupSubscription>>>(args?: {
     where?: GroupWhereInput;
     orderBy?: GroupOrderByInput;
@@ -969,22 +969,22 @@ export interface CompanySubscription
     before?: String;
     first?: Int;
     last?: Int;
-  }) => T;
+  }) => T
 }
 
 export interface User {
-  id: ID_Output;
-  name: String;
-  email: String;
-  password: String;
+  id: ID_Output
+  name: String
+  email: String
+  password: String
 }
 
 export interface UserPromise extends Promise<User>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  company: <T = CompanyPromise>() => T;
+  id: () => Promise<ID_Output>
+  name: () => Promise<String>
+  email: () => Promise<String>
+  password: () => Promise<String>
+  company: <T = CompanyPromise>() => T
   groups: <T = FragmentableArray<Group>>(args?: {
     where?: GroupWhereInput;
     orderBy?: GroupOrderByInput;
@@ -993,17 +993,17 @@ export interface UserPromise extends Promise<User>, Fragmentable {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => T;
+  }) => T
 }
 
 export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  company: <T = CompanySubscription>() => T;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  name: () => Promise<AsyncIterator<String>>
+  email: () => Promise<AsyncIterator<String>>
+  password: () => Promise<AsyncIterator<String>>
+  company: <T = CompanySubscription>() => T
   groups: <T = Promise<AsyncIterator<GroupSubscription>>>(args?: {
     where?: GroupWhereInput;
     orderBy?: GroupOrderByInput;
@@ -1012,18 +1012,18 @@ export interface UserSubscription
     before?: String;
     first?: Int;
     last?: Int;
-  }) => T;
+  }) => T
 }
 
 export interface Group {
-  id: ID_Output;
-  name: String;
+  id: ID_Output
+  name: String
 }
 
 export interface GroupPromise extends Promise<Group>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  company: <T = CompanyPromise>() => T;
+  id: () => Promise<ID_Output>
+  name: () => Promise<String>
+  company: <T = CompanyPromise>() => T
   users: <T = FragmentableArray<User>>(args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
@@ -1032,15 +1032,15 @@ export interface GroupPromise extends Promise<Group>, Fragmentable {
     before?: String;
     first?: Int;
     last?: Int;
-  }) => T;
+  }) => T
 }
 
 export interface GroupSubscription
   extends Promise<AsyncIterator<Group>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  company: <T = CompanySubscription>() => T;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  name: () => Promise<AsyncIterator<String>>
+  company: <T = CompanySubscription>() => T
   users: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
     where?: UserWhereInput;
     orderBy?: UserOrderByInput;
@@ -1049,494 +1049,494 @@ export interface GroupSubscription
     before?: String;
     first?: Int;
     last?: Int;
-  }) => T;
+  }) => T
 }
 
 export interface CompanyConnection {
-  pageInfo: PageInfo;
-  edges: CompanyEdge[];
+  pageInfo: PageInfo
+  edges: CompanyEdge[]
 }
 
 export interface CompanyConnectionPromise
   extends Promise<CompanyConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CompanyEdge>>() => T;
-  aggregate: <T = AggregateCompanyPromise>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T
+  edges: <T = FragmentableArray<CompanyEdge>>() => T
+  aggregate: <T = AggregateCompanyPromise>() => T
 }
 
 export interface CompanyConnectionSubscription
   extends Promise<AsyncIterator<CompanyConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CompanyEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCompanySubscription>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T
+  edges: <T = Promise<AsyncIterator<CompanyEdgeSubscription>>>() => T
+  aggregate: <T = AggregateCompanySubscription>() => T
 }
 
 export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor?: String
+  endCursor?: String
 }
 
 export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
+  hasNextPage: () => Promise<Boolean>
+  hasPreviousPage: () => Promise<Boolean>
+  startCursor: () => Promise<String>
+  endCursor: () => Promise<String>
 }
 
 export interface PageInfoSubscription
   extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>
+  startCursor: () => Promise<AsyncIterator<String>>
+  endCursor: () => Promise<AsyncIterator<String>>
 }
 
 export interface CompanyEdge {
-  node: Company;
-  cursor: String;
+  node: Company
+  cursor: String
 }
 
 export interface CompanyEdgePromise extends Promise<CompanyEdge>, Fragmentable {
-  node: <T = CompanyPromise>() => T;
-  cursor: () => Promise<String>;
+  node: <T = CompanyPromise>() => T
+  cursor: () => Promise<String>
 }
 
 export interface CompanyEdgeSubscription
   extends Promise<AsyncIterator<CompanyEdge>>,
-    Fragmentable {
-  node: <T = CompanySubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  node: <T = CompanySubscription>() => T
+  cursor: () => Promise<AsyncIterator<String>>
 }
 
 export interface AggregateCompany {
-  count: Int;
+  count: Int
 }
 
 export interface AggregateCompanyPromise
   extends Promise<AggregateCompany>,
-    Fragmentable {
-  count: () => Promise<Int>;
+  Fragmentable {
+  count: () => Promise<Int>
 }
 
 export interface AggregateCompanySubscription
   extends Promise<AsyncIterator<AggregateCompany>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
 }
 
 export interface GroupConnection {
-  pageInfo: PageInfo;
-  edges: GroupEdge[];
+  pageInfo: PageInfo
+  edges: GroupEdge[]
 }
 
 export interface GroupConnectionPromise
   extends Promise<GroupConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<GroupEdge>>() => T;
-  aggregate: <T = AggregateGroupPromise>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T
+  edges: <T = FragmentableArray<GroupEdge>>() => T
+  aggregate: <T = AggregateGroupPromise>() => T
 }
 
 export interface GroupConnectionSubscription
   extends Promise<AsyncIterator<GroupConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<GroupEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateGroupSubscription>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T
+  edges: <T = Promise<AsyncIterator<GroupEdgeSubscription>>>() => T
+  aggregate: <T = AggregateGroupSubscription>() => T
 }
 
 export interface GroupEdge {
-  node: Group;
-  cursor: String;
+  node: Group
+  cursor: String
 }
 
 export interface GroupEdgePromise extends Promise<GroupEdge>, Fragmentable {
-  node: <T = GroupPromise>() => T;
-  cursor: () => Promise<String>;
+  node: <T = GroupPromise>() => T
+  cursor: () => Promise<String>
 }
 
 export interface GroupEdgeSubscription
   extends Promise<AsyncIterator<GroupEdge>>,
-    Fragmentable {
-  node: <T = GroupSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  node: <T = GroupSubscription>() => T
+  cursor: () => Promise<AsyncIterator<String>>
 }
 
 export interface AggregateGroup {
-  count: Int;
+  count: Int
 }
 
 export interface AggregateGroupPromise
   extends Promise<AggregateGroup>,
-    Fragmentable {
-  count: () => Promise<Int>;
+  Fragmentable {
+  count: () => Promise<Int>
 }
 
 export interface AggregateGroupSubscription
   extends Promise<AsyncIterator<AggregateGroup>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
 }
 
 export interface KeyPair {
-  id: ID_Output;
-  public: String;
-  private: String;
+  id: ID_Output
+  public: String
+  private: String
 }
 
 export interface KeyPairPromise extends Promise<KeyPair>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  public: () => Promise<String>;
-  private: () => Promise<String>;
+  id: () => Promise<ID_Output>
+  public: () => Promise<String>
+  private: () => Promise<String>
 }
 
 export interface KeyPairSubscription
   extends Promise<AsyncIterator<KeyPair>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  public: () => Promise<AsyncIterator<String>>;
-  private: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  public: () => Promise<AsyncIterator<String>>
+  private: () => Promise<AsyncIterator<String>>
 }
 
 export interface KeyPairConnection {
-  pageInfo: PageInfo;
-  edges: KeyPairEdge[];
+  pageInfo: PageInfo
+  edges: KeyPairEdge[]
 }
 
 export interface KeyPairConnectionPromise
   extends Promise<KeyPairConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<KeyPairEdge>>() => T;
-  aggregate: <T = AggregateKeyPairPromise>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T
+  edges: <T = FragmentableArray<KeyPairEdge>>() => T
+  aggregate: <T = AggregateKeyPairPromise>() => T
 }
 
 export interface KeyPairConnectionSubscription
   extends Promise<AsyncIterator<KeyPairConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<KeyPairEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateKeyPairSubscription>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T
+  edges: <T = Promise<AsyncIterator<KeyPairEdgeSubscription>>>() => T
+  aggregate: <T = AggregateKeyPairSubscription>() => T
 }
 
 export interface KeyPairEdge {
-  node: KeyPair;
-  cursor: String;
+  node: KeyPair
+  cursor: String
 }
 
 export interface KeyPairEdgePromise extends Promise<KeyPairEdge>, Fragmentable {
-  node: <T = KeyPairPromise>() => T;
-  cursor: () => Promise<String>;
+  node: <T = KeyPairPromise>() => T
+  cursor: () => Promise<String>
 }
 
 export interface KeyPairEdgeSubscription
   extends Promise<AsyncIterator<KeyPairEdge>>,
-    Fragmentable {
-  node: <T = KeyPairSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  node: <T = KeyPairSubscription>() => T
+  cursor: () => Promise<AsyncIterator<String>>
 }
 
 export interface AggregateKeyPair {
-  count: Int;
+  count: Int
 }
 
 export interface AggregateKeyPairPromise
   extends Promise<AggregateKeyPair>,
-    Fragmentable {
-  count: () => Promise<Int>;
+  Fragmentable {
+  count: () => Promise<Int>
 }
 
 export interface AggregateKeyPairSubscription
   extends Promise<AsyncIterator<AggregateKeyPair>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
 }
 
 export interface UserConnection {
-  pageInfo: PageInfo;
-  edges: UserEdge[];
+  pageInfo: PageInfo
+  edges: UserEdge[]
 }
 
 export interface UserConnectionPromise
   extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T
+  edges: <T = FragmentableArray<UserEdge>>() => T
+  aggregate: <T = AggregateUserPromise>() => T
 }
 
 export interface UserConnectionSubscription
   extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T
+  aggregate: <T = AggregateUserSubscription>() => T
 }
 
 export interface UserEdge {
-  node: User;
-  cursor: String;
+  node: User
+  cursor: String
 }
 
 export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
+  node: <T = UserPromise>() => T
+  cursor: () => Promise<String>
 }
 
 export interface UserEdgeSubscription
   extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  node: <T = UserSubscription>() => T
+  cursor: () => Promise<AsyncIterator<String>>
 }
 
 export interface AggregateUser {
-  count: Int;
+  count: Int
 }
 
 export interface AggregateUserPromise
   extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
+  Fragmentable {
+  count: () => Promise<Int>
 }
 
 export interface AggregateUserSubscription
   extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>
 }
 
 export interface BatchPayload {
-  count: Long;
+  count: Long
 }
 
 export interface BatchPayloadPromise
   extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
+  Fragmentable {
+  count: () => Promise<Long>
 }
 
 export interface BatchPayloadSubscription
   extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
+  Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>
 }
 
 export interface CompanySubscriptionPayload {
-  mutation: MutationType;
-  node: Company;
-  updatedFields: String[];
-  previousValues: CompanyPreviousValues;
+  mutation: MutationType
+  node: Company
+  updatedFields: String[]
+  previousValues: CompanyPreviousValues
 }
 
 export interface CompanySubscriptionPayloadPromise
   extends Promise<CompanySubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CompanyPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CompanyPreviousValuesPromise>() => T;
+  Fragmentable {
+  mutation: () => Promise<MutationType>
+  node: <T = CompanyPromise>() => T
+  updatedFields: () => Promise<String[]>
+  previousValues: <T = CompanyPreviousValuesPromise>() => T
 }
 
 export interface CompanySubscriptionPayloadSubscription
   extends Promise<AsyncIterator<CompanySubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CompanySubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CompanyPreviousValuesSubscription>() => T;
+  Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>
+  node: <T = CompanySubscription>() => T
+  updatedFields: () => Promise<AsyncIterator<String[]>>
+  previousValues: <T = CompanyPreviousValuesSubscription>() => T
 }
 
 export interface CompanyPreviousValues {
-  id: ID_Output;
-  name: String;
-  homepage?: String;
+  id: ID_Output
+  name: String
+  homepage?: String
 }
 
 export interface CompanyPreviousValuesPromise
   extends Promise<CompanyPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  homepage: () => Promise<String>;
+  Fragmentable {
+  id: () => Promise<ID_Output>
+  name: () => Promise<String>
+  homepage: () => Promise<String>
 }
 
 export interface CompanyPreviousValuesSubscription
   extends Promise<AsyncIterator<CompanyPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  homepage: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  name: () => Promise<AsyncIterator<String>>
+  homepage: () => Promise<AsyncIterator<String>>
 }
 
 export interface GroupSubscriptionPayload {
-  mutation: MutationType;
-  node: Group;
-  updatedFields: String[];
-  previousValues: GroupPreviousValues;
+  mutation: MutationType
+  node: Group
+  updatedFields: String[]
+  previousValues: GroupPreviousValues
 }
 
 export interface GroupSubscriptionPayloadPromise
   extends Promise<GroupSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = GroupPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = GroupPreviousValuesPromise>() => T;
+  Fragmentable {
+  mutation: () => Promise<MutationType>
+  node: <T = GroupPromise>() => T
+  updatedFields: () => Promise<String[]>
+  previousValues: <T = GroupPreviousValuesPromise>() => T
 }
 
 export interface GroupSubscriptionPayloadSubscription
   extends Promise<AsyncIterator<GroupSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = GroupSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = GroupPreviousValuesSubscription>() => T;
+  Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>
+  node: <T = GroupSubscription>() => T
+  updatedFields: () => Promise<AsyncIterator<String[]>>
+  previousValues: <T = GroupPreviousValuesSubscription>() => T
 }
 
 export interface GroupPreviousValues {
-  id: ID_Output;
-  name: String;
+  id: ID_Output
+  name: String
 }
 
 export interface GroupPreviousValuesPromise
   extends Promise<GroupPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  Fragmentable {
+  id: () => Promise<ID_Output>
+  name: () => Promise<String>
 }
 
 export interface GroupPreviousValuesSubscription
   extends Promise<AsyncIterator<GroupPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  name: () => Promise<AsyncIterator<String>>
 }
 
 export interface KeyPairSubscriptionPayload {
-  mutation: MutationType;
-  node: KeyPair;
-  updatedFields: String[];
-  previousValues: KeyPairPreviousValues;
+  mutation: MutationType
+  node: KeyPair
+  updatedFields: String[]
+  previousValues: KeyPairPreviousValues
 }
 
 export interface KeyPairSubscriptionPayloadPromise
   extends Promise<KeyPairSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = KeyPairPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = KeyPairPreviousValuesPromise>() => T;
+  Fragmentable {
+  mutation: () => Promise<MutationType>
+  node: <T = KeyPairPromise>() => T
+  updatedFields: () => Promise<String[]>
+  previousValues: <T = KeyPairPreviousValuesPromise>() => T
 }
 
 export interface KeyPairSubscriptionPayloadSubscription
   extends Promise<AsyncIterator<KeyPairSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = KeyPairSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = KeyPairPreviousValuesSubscription>() => T;
+  Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>
+  node: <T = KeyPairSubscription>() => T
+  updatedFields: () => Promise<AsyncIterator<String[]>>
+  previousValues: <T = KeyPairPreviousValuesSubscription>() => T
 }
 
 export interface KeyPairPreviousValues {
-  id: ID_Output;
-  public: String;
-  private: String;
+  id: ID_Output
+  public: String
+  private: String
 }
 
 export interface KeyPairPreviousValuesPromise
   extends Promise<KeyPairPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  public: () => Promise<String>;
-  private: () => Promise<String>;
+  Fragmentable {
+  id: () => Promise<ID_Output>
+  public: () => Promise<String>
+  private: () => Promise<String>
 }
 
 export interface KeyPairPreviousValuesSubscription
   extends Promise<AsyncIterator<KeyPairPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  public: () => Promise<AsyncIterator<String>>;
-  private: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  public: () => Promise<AsyncIterator<String>>
+  private: () => Promise<AsyncIterator<String>>
 }
 
 export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
+  mutation: MutationType
+  node: User
+  updatedFields: String[]
+  previousValues: UserPreviousValues
 }
 
 export interface UserSubscriptionPayloadPromise
   extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  Fragmentable {
+  mutation: () => Promise<MutationType>
+  node: <T = UserPromise>() => T
+  updatedFields: () => Promise<String[]>
+  previousValues: <T = UserPreviousValuesPromise>() => T
 }
 
 export interface UserSubscriptionPayloadSubscription
   extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>
+  node: <T = UserSubscription>() => T
+  updatedFields: () => Promise<AsyncIterator<String[]>>
+  previousValues: <T = UserPreviousValuesSubscription>() => T
 }
 
 export interface UserPreviousValues {
-  id: ID_Output;
-  name: String;
-  email: String;
-  password: String;
+  id: ID_Output
+  name: String
+  email: String
+  password: String
 }
 
 export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
+  Fragmentable {
+  id: () => Promise<ID_Output>
+  name: () => Promise<String>
+  email: () => Promise<String>
+  password: () => Promise<String>
 }
 
 export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
+  Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>
+  name: () => Promise<AsyncIterator<String>>
+  email: () => Promise<AsyncIterator<String>>
+  password: () => Promise<AsyncIterator<String>>
 }
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 */
-export type ID_Input = string | number;
-export type ID_Output = string;
+export type ID_Input = string | number
+export type ID_Output = string
 
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
-export type String = string;
+export type String = string
 
 /*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
-export type Int = number;
+export type Int = number
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
 */
-export type Boolean = boolean;
+export type Boolean = boolean
 
-export type Long = string;
+export type Long = string
 
 /**
  * Model Metadata
@@ -1544,22 +1544,22 @@ export type Long = string;
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: 'User',
     embedded: false
   },
   {
-    name: "KeyPair",
+    name: 'KeyPair',
     embedded: false
   },
   {
-    name: "Company",
+    name: 'Company',
     embedded: false
   },
   {
-    name: "Group",
+    name: 'Group',
     embedded: false
   }
-];
+]
 
 /**
  * Type Defs
@@ -1568,8 +1568,8 @@ export const models: Model[] = [
 export const Prisma = makePrismaClientClass<ClientConstructor<Prisma>>({
   typeDefs,
   models,
-  endpoint: `${process.env["PRISMA_PROT"]}://${process.env["PRISMA_HOST"]}:${
-    process.env["PRISMA_PORT"]
-  }${process.env["PRISMA_PATH"]}`
-});
-export const prisma = new Prisma();
+  endpoint: `${process.env['PRISMA_PROT']}://${process.env['PRISMA_HOST']}:${
+    process.env['PRISMA_PORT']
+    }${process.env['PRISMA_PATH']}`
+})
+export const prisma = new Prisma()

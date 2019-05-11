@@ -14,13 +14,13 @@
 
 Start docker:
 
-```
+```bash
 docker-compose up -d prisma
 ```
 
 After start server:
 
-```
+```bash
 yarn prisma:deploy
 yarn prisma:generate
 yarn start:dev
