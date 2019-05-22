@@ -16,9 +16,10 @@ function normalizePort(portin: string | number): string | number {
 }
 
 const port = normalizePort(process.env.AUTH_PORT || 4000)
-const address = process.env.AUTH_HOST || 'localhost'
 
-server.start({ port }, () => {
+server.start({ port }, async () => {
+  const dns = require('dns')
+  const { address } = await dns.lookup(process.env.AUTH_HOST || 'localhost')
   console.log(`Server is running on http://${address}:${port}`)
   const CONSUL_ID = require('uuid').v4()
   const details = {
