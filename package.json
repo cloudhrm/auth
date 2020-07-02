@@ -15,7 +15,7 @@
     "test": "prisma reset -f && jest --setupFiles dotenv/config --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "consul": "^0.34.1",
     "dotenv": "^8.0.0",
     "graphql-yoga": "^1.18.1",
